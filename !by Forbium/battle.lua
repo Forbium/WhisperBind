@@ -159,13 +159,22 @@ function MyBot1()
         end
     end
 end
-    --[[
-        CastSpellByName("Atack")
-        CastSpellByName("Wrath")
-        CastSpellByName("Moonfire")
-        CastSpellByName("Healing Touch")
 
-        CastSpellByName("Rejuvenation")
-        CastSpellByName("Mark of the Wild")
-
-    CastSpellByName("Thorns")]]
+function AllBuff()
+    CastSpellByName("Thorns")
+    CastSpellByName("Mark of the Wild")
+    while UnitBuff("target",teambuff2) do
+        if string.find(UnitBuff("target",teambuff2),"Spell_Nature_Regeneration") then
+            teambuff2=18
+        end
+        teambuff2=teambuff2+1
+    end
+    if teambuff1<17 then CastSpellByName("Mark of the Wild") end
+    while UnitBuff("target",teambuff2) do
+        if string.find(UnitBuff("target",teambuff2),"Spell_Nature_Thorns") then
+            teambuff2=18
+        end
+        teambuff2=teambuff2+1
+    end
+    if teambuff1<17 then CastSpellByName("Thorns") end
+end

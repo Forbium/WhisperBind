@@ -161,13 +161,17 @@ function MyBot1()
 end
 
 function AllBuff()
-    CastSpellByName("Thorns")
-    CastSpellByName("Mark of the Wild")
-    while UnitBuff("target",teambuff2) do
-        if string.find(UnitBuff("target",teambuff2),"Spell_Nature_Regeneration") then
-            teambuff2=18
+    local teambuff1 = 1;
+    local teambuff2 = 1;
+    --CastSpellByName("Thorns")
+    --CastSpellByName("Mark of the Wild")
+    if ("target" ~= nil) then TargetUnit("player") end
+    
+    while UnitBuff("target",teambuff1) do
+        if string.find(UnitBuff("target",teambuff1),"Spell_Nature_Regeneration") then
+            teambuff1=18
         end
-        teambuff2=teambuff2+1
+        teambuff1=teambuff1+1
     end
     if teambuff1<17 then CastSpellByName("Mark of the Wild") end
     while UnitBuff("target",teambuff2) do
@@ -176,5 +180,5 @@ function AllBuff()
         end
         teambuff2=teambuff2+1
     end
-    if teambuff1<17 then CastSpellByName("Thorns") end
+    if teambuff2<17 then CastSpellByName("Thorns") end
 end

@@ -163,9 +163,8 @@ end
 function AllBuff()
     local teambuff1 = 1;
     local teambuff2 = 1;
-    --CastSpellByName("Thorns")
-    --CastSpellByName("Mark of the Wild")
-    if ("target" ~= nil) then TargetUnit("player") end
+    
+    if ("target" == nil) then TargetUnit("player") end
     
     while UnitBuff("target",teambuff1) do
         if string.find(UnitBuff("target",teambuff1),"Spell_Nature_Regeneration") then
@@ -181,4 +180,37 @@ function AllBuff()
         teambuff2=teambuff2+1
     end
     if teambuff2<17 then CastSpellByName("Thorns") end
+end
+
+battle_Library = {}
+
+function battle_OnLoad()
+    this:RegisterEvent("CHAT_MSG_WHISPER");
+    DEFAULT_CHAT_FRAME:AddMessage("it`s okey", 1.0, 1.0, 0.0)
+end
+
+function battle_OnEvent(event)
+    local trigger = "allbuff"
+    if (event == "CHAT_MSG_WHISPER") then
+        name = arg2
+        text = arg1
+        if ( string.find(text,"^ *"..trigger.." *$" ) ) then
+            DEFAULT_CHAT_FRAME:AddMessage("it`s okey", 1.0, 1.0, 0.0)
+            battle_Library[table.getn(battle_Library)+1] = {name = arg2; spell = arg1}
+        end
+    end
+end
+
+function battle_Cast()
+    for i = 1,table.getn(battle_Library) do
+        if(battle_Library[i] == nil) then
+            i = i + 1
+            DEFAULT_CHAT_FRAME:AddMessage("nil is = "..battle_Library[i].name, 1.0, 1.0, 0.0)
+        else
+            TargetByName(battle_Library[i].name)
+            DEFAULT_CHAT_FRAME:AddMessage("name is = "..battle_Library[i].name, 1.0, 1.0, 0.0)
+            battle_Library[i] = nil
+            AllBuff()
+        end
+    end
 end

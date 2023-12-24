@@ -160,6 +160,94 @@ function MyBot1()
     end
 end
 
+--======= VERSION 2023.12.24 =============
+
+buff_trigger = {
+    "mark",
+    "thorns"
+}
+buff_spell = {
+    "Mark of the Wild",
+    "Thorns"
+}
+buff_effect = {
+    "Spell_Nature_Regeneration",
+    "Spell_Nature_Thorns"
+}
+
+allbuff_trigger = "allbuff"
+
+queuery_spells = {}
+queuery_names = {}
+
+
+function battle_OnLoad()
+    this:RegisterEvent("CHAT_MSG_WHISPER");
+    DEFAULT_CHAT_FRAME:AddMessage("addon loaded", 1.0, 1.0, 0.0)
+end
+
+function battle_OnEvent(event)
+    if (event == "CHAT_MSG_WHISPER") then
+        name = arg2
+        text = arg1 -- "mark" "thons" "root" "allbuff"=>"mark thorns root"
+
+        DEFAULT_CHAT_FRAME:AddMessage(name.." send me "..text, 1.0, 1.0, 0.0)
+
+        if ( string.find(text,"^ *"..allbuff_trigger.." *$" ) ) then
+            local temp = ""
+            for _,s in pairs(buff_trigger) do
+                temp = temp..s.." "
+            end
+            text = temp
+            DEFAULT_CHAT_FRAME:AddMessage(temp, 1.0, 1.0, 0.0)
+        end
+
+        for y = 1, table.getn(buff_trigger) do 
+            --if ( string.find(text,"^ *"..buff_trigger[y].." *$" ) ) then
+            if ( string.find(text,"^ *"..buff_trigger[y].." +")  or string.find(text," +"..buff_trigger[y].." *$") or string.find(text," +"..buff_trigger[y].." +") ) then
+                queuery_spells[table.getn(queuery_spells)+1] = buff_spell[y]
+                queuery_names[table.getn(queuery_names)+1] = name
+
+                DEFAULT_CHAT_FRAME:AddMessage("+ add to queuery for "..name.." cast "..buff_spell[y].." as "..table.getn(queuery_spells), 0.0, 0.5, 0.5)
+            end
+        end
+    end
+end
+
+function buffcasting()
+    --for i = 1,table.getn(queuery_spells) do
+    --for i,v in pairs(queuery_spells) do
+    while(queuery_spells[1]) do
+        TargetByName(queuery_names[1]);
+
+        -- nomer spella v massive
+        local a;
+        for j,s in pairs(buff_spell) do if s==queuery_spells[1] then a=j end end
+
+        local b = 1;
+        while UnitBuff("target",b) do
+            if string.find(UnitBuff("target",b),buff_effect[a]) then
+                b=18; end; b=b+1;
+        end
+
+        local castspell=queuery_spells[1];
+        table.remove(queuery_names, 1)
+        table.remove(queuery_spells, 1)
+        for ig, vg in pairs(queuery_spells) do DEFAULT_CHAT_FRAME:AddMessage(ig.." - "..queuery_names[ig].." + "..vg, 0.0, 1.0, 0.5) end
+
+        if b<17 then CastSpellByName(castspell); break end
+
+    end
+end
+
+
+-- a = { 1 = "cast"; 2 = "spell"}
+-- a[i] = (1 = "cast")
+
+
+
+--[[======= BAD VERSION 2023.12.15 =============
+
 function AllBuff()
     local teambuff1 = 1;
     local teambuff2 = 1;
@@ -182,6 +270,8 @@ function AllBuff()
     if teambuff2<17 then CastSpellByName("Thorns") end
 end
 
+
+
 battle_Library = {}
 
 function battle_OnLoad()
@@ -191,11 +281,14 @@ end
 
 function battle_OnEvent(event)
     local trigger = "allbuff"
+
     if (event == "CHAT_MSG_WHISPER") then
         name = arg2
-        text = arg1
+        text = arg1 -- "mark" "thons" "root" "allbuff"=>"mark thorns root"
+
         if ( string.find(text,"^ *"..trigger.." *$" ) ) then
-            DEFAULT_CHAT_FRAME:AddMessage("it`s okey", 1.0, 1.0, 0.0)
+            DEFAULT_CHAT_FRAME:AddMessage(name.." send me "..text, 1.0, 1.0, 0.0)
+
             battle_Library[table.getn(battle_Library)+1] = {name = arg2; spell = arg1}
         end
     end
@@ -203,14 +296,17 @@ end
 
 function battle_Cast()
     for i = 1,table.getn(battle_Library) do
-        if(battle_Library[i] == nil) then
-            i = i + 1
-            DEFAULT_CHAT_FRAME:AddMessage("nil is = "..battle_Library[i].name, 1.0, 1.0, 0.0)
+        --DEFAULT_CHAT_FRAME:AddMessage(i..") asker is "..battle_Library[i].name, 1.0, 1.0, 0.0)
+
+        --if (not battle_Library[i]) then
+            DEFAULT_CHAT_FRAME:AddMessage("nil is = "..battle_Library[i].name, 1.0, 1.0, 0.0)      -- nil = nil
         else
             TargetByName(battle_Library[i].name)
-            DEFAULT_CHAT_FRAME:AddMessage("name is = "..battle_Library[i].name, 1.0, 1.0, 0.0)
-            battle_Library[i] = nil
+            --DEFAULT_CHAT_FRAME:AddMessage("name is = "..battle_Library[i].name, 1.0, 1.0, 0.0)
+            --battle_Library[i] = nil
+            table.remove(battle_Library, i)
+            for ig, v in pairs(battle_Library) do DEFAULT_CHAT_FRAME:AddMessage(ig.." - "..v.name.." + "..v.spell, 0.0, 1.0, 0.5) end
             AllBuff()
-        end
+        --end
     end
-end
+end]]

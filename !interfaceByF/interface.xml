@@ -1,0 +1,1042 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+    <xsl:variable name="variable">0</xsl:variable>
+    
+    <Script file="interface.lua"/>
+    <Frame name="interface" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+        <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOP"/>
+        </Anchors>
+        <Size>
+            <AbsDimension x="72" y="260"/>
+        </Size>
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+            <EdgeSize>
+                <AbsValue val="16"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="16"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="5" right="5" top="5" bottom="5"/>
+            </BackgroundInsets>
+        </Backdrop>
+
+
+        
+        <Frames>
+            <Button name="interfacebutton" inherits="OptionsButtonTemplate" text="Options">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-6"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    
+                    <OnClick>
+                        optionsbtn();
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            
+            
+            <Frame name="options" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="interface" relativePoint="LEFT">
+                        <Offset x="68" y="0"/>
+                    </Anchor>
+                </Anchors>
+                <Size>
+                    <AbsDimension x="216" y="260"/>
+                </Size>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+
+                <Frames>
+
+                    <Button name="interfacebutton1" inherits="OptionsButtonTemplate" text="ButtonName">
+                        <Anchors>
+                            <Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
+                            <Offset x="6" y="-6"/>
+                            </Anchor>
+                        </Anchors>
+                        <Size>
+                            <AbsDimension x="68" y="22"/>
+                        </Size>
+                    </Button>
+
+                    <Button name="interfacebutton1" inherits="OptionsButtonTemplate" text="Player">
+                        <Anchors>
+                            <Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
+                            <Offset x="74" y="-6"/>
+                            </Anchor>
+                        </Anchors>
+                        <Size>
+                            <AbsDimension x="68" y="22"/>
+                        </Size>
+                    </Button>
+
+                    <Button name="interfacebutton1" inherits="OptionsButtonTemplate" text="Message">
+                        <Anchors>
+                            <Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
+                            <Offset x="142" y="-6"/>
+                            </Anchor>
+                        </Anchors>
+                        <Size>
+                            <AbsDimension x="68" y="22"/>
+                        </Size>
+                    </Button>
+
+                    <!--Name For Button Edit Box-->
+
+                    <EditBox name = "namebox1" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-32"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("1")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton1:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton1:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "namebox2" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-54"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("2")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton2:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton2:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "namebox3" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-76"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("3")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton3:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton3:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "namebox4" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-98"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("4")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton4:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton4:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "namebox5" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-120"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("5")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton5:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton5:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "namebox6" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-142"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("6")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton6:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton6:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "namebox7" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-164"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("7")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton7:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton7:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "namebox8" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-186"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("8")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton8:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton8:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "namebox9" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-208"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("9")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton9:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton9:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "namebox10" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "12" y = "-230"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("10")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton10:SetText(this:GetText())
+                                end
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                                if(this:GetText() ~= "") then
+                                    interfacebutton10:SetText(this:GetText())
+                                end
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+
+
+                    <!--Player For Button Edit Box-->
+                    <EditBox name = "playerbox1" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-32"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "playerbox2" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-54"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "playerbox3" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-76"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "playerbox4" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-98"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "playerbox5" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-120"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "playerbox6" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-142"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "playerbox7" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-164"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "playerbox8" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-186"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "playerbox9" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-208"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "playerbox10" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "80" y = "-230"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+                    
+
+
+
+                    <!--Message For Button Edit Box-->
+                    <EditBox name = "messagebox1" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-32"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "messagebox2" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-54"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "messagebox3" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-76"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "messagebox4" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-98"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "messagebox5" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-120"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "messagebox6" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-142"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "messagebox7" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-164"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "messagebox8" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-186"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "messagebox9" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-208"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+
+                    <EditBox name = "messagebox10" inherits = "InputBoxTemplate" autoFocus = "false">
+                        <Size>
+                            <AbsDimension x = "60" y = "24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT">
+                                <Offset x = "148" y = "-230"/>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:SetText("")
+                            </OnLoad>
+                            <OnEscapePressed>
+                                this:ClearFocus()
+                            </OnEscapePressed>
+                            <OnEnterPressed>
+                                this:ClearFocus()
+                            </OnEnterPressed>
+                        </Scripts>
+                    </EditBox>
+                </Frames>
+            </Frame>
+            
+
+
+
+            <Button name="interfacebutton1" inherits="OptionsButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-32"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox1:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox1:GetText(), messagebox1:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            <Button name="interfacebutton2" inherits="OptionsButtonTemplate" text="Thorns">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-54"/>
+                    </Anchor> 
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox2:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox2:GetText(), messagebox2:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            <Button name="interfacebutton3" inherits="OptionsButtonTemplate" text="Mark">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-76"/>
+                    </Anchor> 
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox3:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox3:GetText(), messagebox3:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            <Button name="interfacebutton4" inherits="OptionsButtonTemplate" text="empty">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-98"/>
+                    </Anchor> 
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox4:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox4:GetText(), messagebox4:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            <Button name="interfacebutton5" inherits="OptionsButtonTemplate" text="empty">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-120"/>
+                    </Anchor> 
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox5:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox5:GetText(), messagebox5:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            <Button name="interfacebutton6" inherits="OptionsButtonTemplate" text="empty">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-142"/>
+                    </Anchor> 
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox6:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox6:GetText(), messagebox6:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            <Button name="interfacebutton7" inherits="OptionsButtonTemplate" text="empty">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-164"/>
+                    </Anchor> 
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox7:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox7:GetText(), messagebox7:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            <Button name="interfacebutton8" inherits="OptionsButtonTemplate" text="empty">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-186"/>
+                    </Anchor> 
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox8:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox8:GetText(), messagebox8:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            <Button name="interfacebutton9" inherits="OptionsButtonTemplate" text="empty">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-208"/>
+                    </Anchor> 
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox9:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox9:GetText(), messagebox9:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+
+            <Button name="interfacebutton10" inherits="OptionsButtonTemplate" text="empty">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-230"/>
+                    </Anchor> 
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        this:SetText(namebox10:GetText())
+                    </OnLoad>
+                    <OnClick> 
+                        ClickButton(playerbox10:GetText(), messagebox10:GetText())
+                    </OnClick>
+                </Scripts>
+                <Size>
+                    <AbsDimension x="60" y="22"/>
+                </Size>
+            </Button>
+        </Frames>
+    
+        <Scripts>
+            <OnLoad>
+                interface_OnLoad();
+                interface:RegisterForDrag("LeftButton");
+            </OnLoad>
+            <DragOn>
+                interface_DragOn();
+            </DragOn>
+            <OnDragStart>interface:StartMoving();</OnDragStart>
+            <OnDragStop>interface:StopMovingOrSizing();</OnDragStop>
+        </Scripts>
+    </Frame>
+</Ui>

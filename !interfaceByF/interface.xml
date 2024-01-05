@@ -69,7 +69,7 @@
 
                 <Frames>
 
-                    <Button name="interfacebutton1" inherits="OptionsButtonTemplate" text="ButtonName">
+                    <Button name="optionsbuttonname" inherits="OptionsButtonTemplate" text="ButtonName">
                         <Anchors>
                             <Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
                             <Offset x="6" y="-6"/>
@@ -80,7 +80,7 @@
                         </Size>
                     </Button>
 
-                    <Button name="interfacebutton1" inherits="OptionsButtonTemplate" text="Player">
+                    <Button name="optionsbuttonplayer" inherits="OptionsButtonTemplate" text="Player">
                         <Anchors>
                             <Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
                             <Offset x="74" y="-6"/>
@@ -91,7 +91,7 @@
                         </Size>
                     </Button>
 
-                    <Button name="interfacebutton1" inherits="OptionsButtonTemplate" text="Message">
+                    <Button name="optionsbuttonmessage" inherits="OptionsButtonTemplate" text="Message">
                         <Anchors>
                             <Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
                             <Offset x="142" y="-6"/>

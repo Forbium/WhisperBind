@@ -1,5 +1,7 @@
 ## Interface: 11200
 ## Author: Forbium
 ## Title: !InterfaceByF
-interface.xml
+## SavedVariables: saveinformation = {}
+
 interface.lua
+interface.xml

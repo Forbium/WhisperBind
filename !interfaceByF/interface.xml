@@ -2,7 +2,6 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
 
-    <xsl:variable name="variable">0</xsl:variable>
     
     <Script file="interface.lua"/>
     <Frame name="interface" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
@@ -44,6 +43,57 @@
                 </Size>
             </Button>
 
+
+            <Frame name="SaveFrame" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+                <Anchors>
+                    <Anchor point="BOTTOM" relativeTo="interface" relativePoint="TOP">
+                        <Offset x="0" y="-4"/>
+                    </Anchor>
+                </Anchors>
+                <Size>
+                    <AbsDimension x="72" y="32"/>
+                </Size>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+                <Frames>
+                    <Button name="Save" inherits="OptionsButtonTemplate" text="Save">
+                        <Anchors>
+                            <Anchor point="TOP"  relativeTo="SaveFrame" relativePoint="TOP">
+                            <Offset x="0" y="-4"/>
+                            </Anchor>
+                        </Anchors>
+                        <Size>
+                            <AbsDimension x="60" y="22"/>
+                        </Size>
+                        <Scripts>
+                            <OnClick>
+                                savevalue(namebox1:GetText(), namebox2:GetText(), namebox3:GetText(),
+                                namebox4:GetText(), namebox5:GetText(), namebox6:GetText(), namebox7:GetText(),
+                                namebox8:GetText(), namebox9:GetText(), namebox10:GetText(),
+                                playerbox1:GetText(), playerbox2:GetText(), playerbox3:GetText(),
+                                playerbox4:GetText(), playerbox5:GetText(), playerbox6:GetText(),
+                                playerbox7:GetText(), playerbox8:GetText(), playerbox9:GetText(),
+                                playerbox10:GetText(),
+                                messagebox1:GetText(), messagebox2:GetText(), messagebox3:GetText(),
+                                messagebox4:GetText(), messagebox5:GetText(), messagebox6:GetText(),
+                                messagebox7:GetText(), messagebox8:GetText(), messagebox9:GetText(),
+                                messagebox10:GetText());
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                </Frames>
+
+            </Frame>
+
             
             
             <Frame name="options" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
@@ -53,7 +103,7 @@
                     </Anchor>
                 </Anchors>
                 <Size>
-                    <AbsDimension x="216" y="260"/>
+                    <AbsDimension x="215" y="260"/>
                 </Size>
                 <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
                     <EdgeSize>
@@ -76,7 +126,7 @@
                             </Anchor>
                         </Anchors>
                         <Size>
-                            <AbsDimension x="68" y="22"/>
+                            <AbsDimension x="67" y="22"/>
                         </Size>
                     </Button>
 
@@ -87,7 +137,7 @@
                             </Anchor>
                         </Anchors>
                         <Size>
-                            <AbsDimension x="68" y="22"/>
+                            <AbsDimension x="67" y="22"/>
                         </Size>
                     </Button>
 
@@ -98,7 +148,7 @@
                             </Anchor>
                         </Anchors>
                         <Size>
-                            <AbsDimension x="68" y="22"/>
+                            <AbsDimension x="67" y="22"/>
                         </Size>
                     </Button>
 
@@ -1029,12 +1079,21 @@
     
         <Scripts>
             <OnLoad>
+                loadvalue(namebox1, namebox2, namebox3,
+                                namebox4, namebox5, namebox6, namebox7,
+                                namebox8, namebox9, namebox10,
+                                playerbox1, playerbox2, playerbox3,
+                                playerbox4, playerbox5<!--, playerbox6,
+                                playerbox7, playerbox8, playerbox9,
+                                playerbox10,
+                                messagebox1, messagebox2, messagebox3,
+                                messagebox4, messagebox5, messagebox6,
+                                messagebox7, messagebox8, messagebox9,
+                                messagebox10-->);
+                
                 interface_OnLoad();
                 interface:RegisterForDrag("LeftButton");
             </OnLoad>
-            <DragOn>
-                interface_DragOn();
-            </DragOn>
             <OnDragStart>interface:StartMoving();</OnDragStart>
             <OnDragStop>interface:StopMovingOrSizing();</OnDragStop>
         </Scripts>

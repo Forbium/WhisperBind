@@ -61,7 +61,7 @@
                     </Anchor>
                 </Anchors>
                 <Size>
-                    <AbsDimension x="72" y="32"/>
+                    <AbsDimension x="72" y="33"/>
                 </Size>
                 <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
                     <EdgeSize>
@@ -78,7 +78,7 @@
                     <Button name="Save" inherits="OptionsButtonTemplate" text="Save">
                         <Anchors>
                             <Anchor point="TOP"  relativeTo="SaveFrame" relativePoint="TOP">
-                            <Offset x="0" y="-4"/>
+                            <Offset x="0" y="-5"/>
                             </Anchor>
                         </Anchors>
                         <Size>
@@ -121,19 +121,19 @@
 
                     <Button name="optionsbuttonname" inherits="interfacebuttonTemplate" text="ButtonID">
                         <Anchors><Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
-                            <Offset x="6" y="-6"/>
+                            <Offset x="9" y="-6"/>
 						</Anchor></Anchors>
                     </Button>
 
                     <Button name="optionsbuttonplayer" inherits="interfacebuttonTemplate" text="Player">
                         <Anchors><Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
-                            <Offset x="74" y="-6"/>
+                            <Offset x="77" y="-6"/>
 						</Anchor></Anchors>
                     </Button>
 
                     <Button name="optionsbuttonmessage" inherits="interfacebuttonTemplate" text="Message">
                         <Anchors><Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
-                            <Offset x="142" y="-6"/>
+                            <Offset x="145" y="-6"/>
 						</Anchor></Anchors>
                     </Button>
 

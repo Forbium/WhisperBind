@@ -1,7 +1,5 @@
 optvalue = 0;
 
---DEFAULT_CHAT_FRAME:AddMessage(saveinformation[1], 1.0, 1.0, 0.0)
-
 -- https://wowwiki-archive.fandom.com/wiki/USERAPI_SlashCmdList_AddSlashCommand
 -- /forbium
 
@@ -51,23 +49,15 @@ function interface_OnLoad()
 
 end
 
---addons_massiv = {}
---iii = 1
-
 -- https://wowwiki-archive.fandom.com/wiki/Saving_variables_between_game_sessions
 function interface_OnEvent(event)
 	if (event == "ADDON_LOADED") then
-		--addons_massiv[iii] = ("LOADED: === "..arg1)
-		--iii = iii + 1;
-		--DEFAULT_CHAT_FRAME:AddMessage("LOADED: === "..arg1, 1.0, 1.0, 0.0)
 		if (arg1 == "!interfaceByF") then
 			loadvalue();
 			DEFAULT_CHAT_FRAME:AddMessage("variables loaded", 1.0, 1.0, 0.0)
 		end
 	end
 end
-
---/run for _,k in pairs(addons_massiv) do print(k) end
 
 
 function ClickButton(player, text)
@@ -155,12 +145,6 @@ function savevalue()
 	saveinformation.messagebox8 = messagebox8:GetText();
 	saveinformation.messagebox9 = messagebox9:GetText();
 	saveinformation.messagebox10 = messagebox10:GetText();
-	
-	--[[
-	for i,k in pairs(saveinformation) do
-		if (k ~= nil) then DEFAULT_CHAT_FRAME:AddMessage(i.." - "..k, 1.0, 1.0, 0.0) end
-	end
-	]]
 end
 
 
@@ -174,6 +158,7 @@ end
 function loadvalue()
 
 	interfacebutton1:SetText(saveinformation.namebox1);
+	namebox1:SetText(saveinformation.namebox1);
 	interfacebutton2:SetText(saveinformation.namebox2);
 	interfacebutton3:SetText(saveinformation.namebox3);
 	interfacebutton4:SetText(saveinformation.namebox4);
@@ -216,6 +201,4 @@ function loadvalue()
 	messagebox8:SetText(saveinformation.messagebox8);
 	messagebox9:SetText(saveinformation.messagebox9);
 	messagebox10:SetText(saveinformation.messagebox10);
-	
-	
 end

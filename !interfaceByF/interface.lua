@@ -2,39 +2,44 @@ optvalue = 0;
 
 --DEFAULT_CHAT_FRAME:AddMessage(saveinformation[1], 1.0, 1.0, 0.0)
 
-saveinformation = {
-1,
-2,
-3,
-4,
-5,
-6,
-7,
-8,
-9,
-10,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil,
-nil
-}
+-- https://wowwiki-archive.fandom.com/wiki/USERAPI_SlashCmdList_AddSlashCommand
+-- /forbium
 
+-- Rogolist edition
+saveinformation = {
+namebox1 = "free",
+namebox2 = "free",
+namebox3 = "free",
+namebox4 = "free",
+namebox5 = "free",
+namebox6 = "free",
+namebox7 = "free",
+namebox8 = "free",
+namebox9 = "free",
+namebox10 = "free",
+
+playerbox1 = nil,
+playerbox2 = nil,
+playerbox3 = nil,
+playerbox4 = nil,
+playerbox5 = nil,
+playerbox6 = nil,
+playerbox7 = nil,
+playerbox8 = nil,
+playerbox9 = nil,
+playerbox10 = nil,
+
+messagebox1 = nil,
+messagebox2 = nil,
+messagebox3 = nil,
+messagebox4 = nil,
+messagebox5 = nil,
+messagebox6 = nil,
+messagebox7 = nil,
+messagebox8 = nil,
+messagebox9 = nil,
+messagebox10 = nil
+}
 
 function interface_OnLoad()
     this:RegisterEvent("ADDON_LOADED");
@@ -43,10 +48,32 @@ function interface_OnLoad()
     interface:Show()
     options:Hide()
     optvalue = 0;
+
 end
 
+--addons_massiv = {}
+--iii = 1
+
+-- https://wowwiki-archive.fandom.com/wiki/Saving_variables_between_game_sessions
+function interface_OnEvent(event)
+	if (event == "ADDON_LOADED") then
+		--addons_massiv[iii] = ("LOADED: === "..arg1)
+		--iii = iii + 1;
+		--DEFAULT_CHAT_FRAME:AddMessage("LOADED: === "..arg1, 1.0, 1.0, 0.0)
+		if (arg1 == "!interfaceByF") then
+			loadvalue();
+			DEFAULT_CHAT_FRAME:AddMessage("variables loaded", 1.0, 1.0, 0.0)
+		end
+	end
+end
+
+--/run for _,k in pairs(addons_massiv) do print(k) end
+
+
 function ClickButton(player, text)
-    SendChatMessage(text, "WHISPER", nil, player);
+	if (string.len(player)>1) and (string.len(text)>1) then
+		SendChatMessage(text, "WHISPER", nil, player);
+	end
 end
 
 function optionsbtn()
@@ -54,78 +81,141 @@ function optionsbtn()
         options:Show()
         SaveFrame:Show()
         optvalue = 1;
+
     else
         options:Hide()
         SaveFrame:Hide()
         optvalue = 0;
+
     end
 end
 
-function savevalue(nameb1, nameb2, nameb3, nameb4, nameb5, nameb6, nameb7, nameb8, nameb9, nameb10,
-    playerb1, playerb2, playerb3, playerb4, playerb5, playerb6, playerb7, playerb8, playerb9, playerb10,
-    messageb1, messageb2, messageb3, messageb4, messageb5, messageb6, messageb7, messageb8, messageb9, messageb10)
-    if(nameb1 ~= nil)   then
-        saveinformation[1] = nameb1;
-    end
-    if(nameb2 ~= nil)   then
-        saveinformation[2] = nameb2;
-    end
-    if(nameb3 ~= nil)   then
-        saveinformation[3] = nameb3;
-    end
-    if(nameb4 ~= nil)   then
-        saveinformation[4] = nameb4;
-    end
-    if(nameb5 ~= nil)   then
-        saveinformation[5] = nameb5;
-    end
-    if(nameb6 ~= nil)   then
-        saveinformation[6] = nameb6;
-    end
-    if(nameb7 ~= nil)   then
-        saveinformation[7] = nameb7;
-    end
-    if(nameb8 ~= nil)   then
-        saveinformation[8] = nameb8;
-    end
-    if(nameb9 ~= nil)   then
-        saveinformation[9] = nameb9;
-    end
-    if(nameb10 ~= nil)   then
-        saveinformation[10] = nameb10;
-    end
+-- Rogolist edition
+function savevalue()
 
-    saveinformation[11] = playerb1;
-    saveinformation[12] = playerb2;
-    saveinformation[13] = playerb3;
-    saveinformation[14] = playerb4;
-    saveinformation[15] = playerb5;
-    saveinformation[16] = playerb6;
-    saveinformation[17] = playerb7;
-    saveinformation[18] = playerb8;
-    saveinformation[19] = playerb9;
-    saveinformation[20] = playerb10;
+	if(namebox1:GetText() ~= nil)   then
+		saveinformation.namebox1 = namebox1:GetText();
+		interfacebutton1:SetText(saveinformation.namebox1);
+	end
+	if(namebox2:GetText() ~= nil)   then
+		saveinformation.namebox2 = namebox2:GetText();
+		interfacebutton2:SetText(saveinformation.namebox2);
+	end
+	if(namebox3:GetText() ~= nil)   then
+		saveinformation.namebox3 = namebox3:GetText();
+		interfacebutton3:SetText(saveinformation.namebox3);
+	end
+	if(namebox4:GetText() ~= nil)   then
+		saveinformation.namebox4 = namebox4:GetText();
+		interfacebutton4:SetText(saveinformation.namebox4);
+	end
+	if(namebox5:GetText() ~= nil)   then
+		saveinformation.namebox5 = namebox5:GetText();
+		interfacebutton5:SetText(saveinformation.namebox5);
+	end
+	if(namebox6:GetText() ~= nil)   then
+		saveinformation.namebox6 = namebox6:GetText();
+		interfacebutton6:SetText(saveinformation.namebox6);
+	end
+	if(namebox7:GetText() ~= nil)   then
+		saveinformation.namebox7 = namebox7:GetText();
+		interfacebutton7:SetText(saveinformation.namebox7);
+	end
+	if(namebox8:GetText() ~= nil)   then
+		saveinformation.namebox8 = namebox8:GetText();
+		interfacebutton8:SetText(saveinformation.namebox8);
+	end
+	if(namebox9:GetText() ~= nil)   then
+		saveinformation.namebox9 = namebox9:GetText();
+		interfacebutton9:SetText(saveinformation.namebox9);
+	end
+	if(namebox10:GetText() ~= nil)   then
+		saveinformation.namebox10 = namebox10:GetText();
+		interfacebutton10:SetText(saveinformation.namebox10);
+	end
 
-    saveinformation[21] = messageb1;
-    saveinformation[22] = messageb2;
-    saveinformation[23] = messageb3;
-    saveinformation[24] = messageb4;
-    saveinformation[25] = messageb5;
-    saveinformation[26] = messageb6;
-    saveinformation[27] = messageb7;
-    saveinformation[28] = messageb8;
-    saveinformation[29] = messageb9;
-    saveinformation[30] = messageb10;
+	saveinformation.playerbox1 = playerbox1:GetText();
+	saveinformation.playerbox2 = playerbox2:GetText();
+	saveinformation.playerbox3 = playerbox3:GetText();
+	saveinformation.playerbox4 = playerbox4:GetText();
+	saveinformation.playerbox5 = playerbox5:GetText();
+	saveinformation.playerbox6 = playerbox6:GetText();
+	saveinformation.playerbox7 = playerbox7:GetText();
+	saveinformation.playerbox8 = playerbox8:GetText();
+	saveinformation.playerbox9 = playerbox9:GetText();
+	saveinformation.playerbox10 = playerbox10:GetText();
 
-    DEFAULT_CHAT_FRAME:AddMessage(saveinformation[1], 1.0, 1.0, 0.0)
-
+	saveinformation.messagebox1 = messagebox1:GetText();
+	saveinformation.messagebox2 = messagebox2:GetText();
+	saveinformation.messagebox3 = messagebox3:GetText();
+	saveinformation.messagebox4 = messagebox4:GetText();
+	saveinformation.messagebox5 = messagebox5:GetText();
+	saveinformation.messagebox6 = messagebox6:GetText();
+	saveinformation.messagebox7 = messagebox7:GetText();
+	saveinformation.messagebox8 = messagebox8:GetText();
+	saveinformation.messagebox9 = messagebox9:GetText();
+	saveinformation.messagebox10 = messagebox10:GetText();
+	
+	--[[
+	for i,k in pairs(saveinformation) do
+		if (k ~= nil) then DEFAULT_CHAT_FRAME:AddMessage(i.." - "..k, 1.0, 1.0, 0.0) end
+	end
+	]]
 end
 
 
-function loadvalue(namebox1)
-    if(saveinformation[1] ~= nil) then
-        namebox1:SetText(saveinformation[1]);
-    end
+function interface_show()
+	for i,k in pairs(saveinformation) do
+		if (k ~= nil) then DEFAULT_CHAT_FRAME:AddMessage(i.." - "..k, 1.0, 1.0, 0.0) end
+	end
+end
 
-    DEFAULT_CHAT_FRAME:AddMessage(namebox1:GetText(), 1.0, 1.0, 0.0)
+
+function loadvalue()
+
+	interfacebutton1:SetText(saveinformation.namebox1);
+	interfacebutton2:SetText(saveinformation.namebox2);
+	interfacebutton3:SetText(saveinformation.namebox3);
+	interfacebutton4:SetText(saveinformation.namebox4);
+	interfacebutton5:SetText(saveinformation.namebox5);
+	interfacebutton6:SetText(saveinformation.namebox6);
+	interfacebutton7:SetText(saveinformation.namebox7);
+	interfacebutton8:SetText(saveinformation.namebox8);
+	interfacebutton9:SetText(saveinformation.namebox9);
+	interfacebutton10:SetText(saveinformation.namebox10);
+	
+	namebox1:SetText(saveinformation.namebox1);
+	namebox2:SetText(saveinformation.namebox2);
+	namebox3:SetText(saveinformation.namebox3);
+	namebox4:SetText(saveinformation.namebox4);
+	namebox5:SetText(saveinformation.namebox5);
+	namebox6:SetText(saveinformation.namebox6);
+	namebox7:SetText(saveinformation.namebox7);
+	namebox8:SetText(saveinformation.namebox8);
+	namebox9:SetText(saveinformation.namebox9);
+	namebox10:SetText(saveinformation.namebox10);
+	
+	playerbox1:SetText(saveinformation.playerbox1);
+	playerbox2:SetText(saveinformation.playerbox2);
+	playerbox3:SetText(saveinformation.playerbox3);
+	playerbox4:SetText(saveinformation.playerbox4);
+	playerbox5:SetText(saveinformation.playerbox5);
+	playerbox6:SetText(saveinformation.playerbox6);
+	playerbox7:SetText(saveinformation.playerbox7);
+	playerbox8:SetText(saveinformation.playerbox8);
+	playerbox9:SetText(saveinformation.playerbox9);
+	playerbox10:SetText(saveinformation.playerbox10);
+	
+	messagebox1:SetText(saveinformation.messagebox1);
+	messagebox2:SetText(saveinformation.messagebox2);
+	messagebox3:SetText(saveinformation.messagebox3);
+	messagebox4:SetText(saveinformation.messagebox4);
+	messagebox5:SetText(saveinformation.messagebox5);
+	messagebox6:SetText(saveinformation.messagebox6);
+	messagebox7:SetText(saveinformation.messagebox7);
+	messagebox8:SetText(saveinformation.messagebox8);
+	messagebox9:SetText(saveinformation.messagebox9);
+	messagebox10:SetText(saveinformation.messagebox10);
+	
+	
 end

@@ -11,5 +11,5 @@ Now the next time your account is launched, you will not need to enter this info
 automatically loaded.
 
 Well suited for the Whispercast addon if you do not need to send many different messages.
-If the window goes beyond the screen, you need to write the command /run interface:SetPoint("TOPLEFT",600,-200);.
+If the window goes beyond the screen, you need to write the command /run whisperbind:SetPoint("TOPLEFT",600,-200);.
 This will bring the window to the center of the screen.

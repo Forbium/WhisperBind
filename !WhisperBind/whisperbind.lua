@@ -8,7 +8,8 @@ WB_storage = {}
 function whisperbind_OnLoad()
     this:RegisterEvent("ADDON_LOADED");
 
-    DEFAULT_CHAT_FRAME:AddMessage("whisperbindByF is loaded", 1.0, 1.0, 0.0)
+    DEFAULT_CHAT_FRAME:AddMessage("WhisperBind is loaded", 2.0, 0.0, 1.0)
+	UIErrorsFrame:AddMessage("WhisperBind is loaded", 2.0, 0.0, 1.0, 0.0, UIERRORS_HOLD_TIME);
     whisperbind:Show()
     options:Hide()
     optvalue = 0;
@@ -18,9 +19,9 @@ end
 -- https://wowwiki-archive.fandom.com/wiki/Saving_variables_between_game_sessions
 function whisperbind_OnEvent(event)
 	if (event == "ADDON_LOADED") then
-		if (arg1 == "!whisperbindByF") then
+		if (arg1 == "!WhisperBind") then
 			loadvalue();
-			DEFAULT_CHAT_FRAME:AddMessage("variables loaded", 1.0, 1.0, 0.0)
+			DEFAULT_CHAT_FRAME:AddMessage("WB_storage loaded", 2.0, 0.0, 1.0)
 		end
 	end
 end

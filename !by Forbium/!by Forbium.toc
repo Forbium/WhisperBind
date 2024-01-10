@@ -1,4 +1,0 @@
-## Interface: 11200
-## Author: Forbium
-## Title: !for Battle
-battle.lua

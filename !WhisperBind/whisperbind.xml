@@ -1,0 +1,443 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+    <Script file="whisperbind.lua"/>
+	<Include file="whisperbindTemplates.xml"/>
+	
+    <Frame name="whisperbind" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+        <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOP"/>
+        </Anchors>
+        <Size>
+            <AbsDimension x="72" y="260"/>
+        </Size>
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+            <EdgeSize>
+                <AbsValue val="16"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="16"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="5" right="5" top="5" bottom="5"/>
+            </BackgroundInsets>
+        </Backdrop>
+		
+		<Scripts>
+            <OnLoad>
+                whisperbind_OnLoad();
+                whisperbind:RegisterForDrag("LeftButton");
+            </OnLoad>
+			<OnEvent>
+				whisperbind_OnEvent(event);
+			</OnEvent>
+            <OnDragStart>whisperbind:StartMoving();</OnDragStart>
+            <OnDragStop>whisperbind:StopMovingOrSizing();</OnDragStop>
+        </Scripts>
+
+
+        
+        <Frames>
+			
+            <Button name="whisperbindbutton" inherits="whisperbindbuttonTemplate" text="Options">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-6"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnClick>
+                        optionsbtn();
+                    </OnClick>
+                </Scripts>
+            </Button>
+			
+
+            <Frame name="SaveFrame" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+                <Anchors>
+                    <Anchor point="BOTTOM" relativeTo="whisperbind" relativePoint="TOP">
+                        <Offset x="0" y="-4"/>
+                    </Anchor>
+                </Anchors>
+                <Size>
+                    <AbsDimension x="72" y="33"/>
+                </Size>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+                <Frames>
+                    <Button name="Save" inherits="OptionsButtonTemplate" text="Save">
+                        <Anchors>
+                            <Anchor point="TOP"  relativeTo="SaveFrame" relativePoint="TOP">
+                            <Offset x="0" y="-5"/>
+                            </Anchor>
+                        </Anchors>
+                        <Size>
+                            <AbsDimension x="60" y="22"/>
+                        </Size>
+                        <Scripts>
+                            <OnClick>
+                                savevalue();
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                </Frames>
+
+            </Frame>
+
+            
+            
+            <Frame name="options" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="whisperbind" relativePoint="LEFT">
+                        <Offset x="68" y="0"/>
+                    </Anchor>
+                </Anchors>
+                <Size>
+                    <AbsDimension x="215" y="260"/>
+                </Size>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+
+                <Frames>
+
+                    <Button name="optionsbuttonname" inherits="whisperbindbuttonTemplate" text="ButtonID">
+                        <Anchors><Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
+                            <Offset x="9" y="-6"/>
+						</Anchor></Anchors>
+                    </Button>
+
+                    <Button name="optionsbuttonplayer" inherits="whisperbindbuttonTemplate" text="Player">
+                        <Anchors><Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
+                            <Offset x="77" y="-6"/>
+						</Anchor></Anchors>
+                    </Button>
+
+                    <Button name="optionsbuttonmessage" inherits="whisperbindbuttonTemplate" text="Message">
+                        <Anchors><Anchor point="TOPLEFT"  relativeTo="options" relativePoint="TOPLEFT">
+                            <Offset x="145" y="-6"/>
+						</Anchor></Anchors>
+                    </Button>
+
+
+                    <!--Name For Button Edit Box -->
+
+                    <EditBox name = "namebox1" inherits = "InputBoxTemplate" autoFocus = "false">
+						<Size>
+							<AbsDimension x = "60" y = "24"/>
+						</Size>
+						<Anchors>
+							<Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="optionsbuttonname">
+								<Offset x = "3" y = "-4"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEscapePressed>this:ClearFocus()</OnEscapePressed>
+							<OnEnterPressed>this:ClearFocus()</OnEnterPressed>
+						</Scripts>
+					</EditBox>
+
+					<EditBox name = "namebox2" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="namebox1">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+					
+					<EditBox name = "namebox3" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="namebox2">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "namebox4" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="namebox3">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "namebox5" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="namebox4">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "namebox6" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="namebox5">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "namebox7" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="namebox6">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "namebox8" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="namebox7">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "namebox9" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="namebox8">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "namebox10" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="namebox9">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+
+                    <!--Player For Button Edit Box-->
+
+					<EditBox name = "playerbox1" inherits = "InputBoxTemplate" autoFocus = "false">
+						<Size>
+							<AbsDimension x = "60" y = "24"/>
+						</Size>
+						<Anchors>
+							<Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="optionsbuttonplayer">
+								<Offset x = "3" y = "-4"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEscapePressed>this:ClearFocus()</OnEscapePressed>
+							<OnEnterPressed>this:ClearFocus()</OnEnterPressed>
+						</Scripts>
+					</EditBox>
+					
+					<EditBox name = "playerbox2" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="playerbox1">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "playerbox3" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="playerbox2">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "playerbox4" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="playerbox3">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "playerbox5" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="playerbox4">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "playerbox6" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="playerbox5">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "playerbox7" inherits = "editboxTemplate" id="7">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="playerbox6">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "playerbox8" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="playerbox7">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "playerbox9" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="playerbox8">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "playerbox10" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="playerbox9">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+
+
+
+
+                    <!--Message For Button Edit Box-->
+                    <EditBox name = "messagebox1" inherits = "InputBoxTemplate" autoFocus = "false">
+						<Size>
+							<AbsDimension x = "60" y = "24"/>
+						</Size>
+						<Anchors>
+							<Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="optionsbuttonmessage">
+								<Offset x = "3" y = "-4"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEscapePressed>this:ClearFocus()</OnEscapePressed>
+							<OnEnterPressed>this:ClearFocus()</OnEnterPressed>
+						</Scripts>
+					</EditBox>
+					
+					<EditBox name = "messagebox2" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="messagebox1">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+
+					<EditBox name = "messagebox3" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="messagebox2">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+					
+					<EditBox name = "messagebox4" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="messagebox3">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+					
+					<EditBox name = "messagebox5" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="messagebox4">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+					
+					<EditBox name = "messagebox6" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="messagebox5">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+					
+					<EditBox name = "messagebox7" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="messagebox6">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+					
+					<EditBox name = "messagebox8" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="messagebox7">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+					
+					<EditBox name = "messagebox9" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="messagebox8">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+					
+					<EditBox name = "messagebox10" inherits = "editboxTemplate">
+						<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="messagebox9">
+								<Offset x = "0" y = "2"/>
+						</Anchor></Anchors>
+					</EditBox>
+					
+                </Frames>
+            </Frame>
+            
+
+
+
+            <Button name="whisperbindbutton1" inherits="whisperbindbuttonTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset x="6" y="-32"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+						ClickButton(playerbox1:GetText(), messagebox1:GetText())
+					</OnClick>
+                </Scripts>
+            </Button>
+
+            <Button name="whisperbindbutton2" inherits="whisperbindbuttonTemplate" text="Thorns">
+				<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="whisperbindbutton1"/></Anchors>
+                <Scripts><OnClick> 
+					ClickButton(playerbox2:GetText(), messagebox2:GetText())
+				</OnClick></Scripts>
+            </Button>
+
+            <Button name="whisperbindbutton3" inherits="whisperbindbuttonTemplate" text="Mark">
+				<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="whisperbindbutton2"/></Anchors>
+                <Scripts><OnClick> 
+					ClickButton(playerbox3:GetText(), messagebox3:GetText())
+				</OnClick></Scripts>
+            </Button>
+
+            <Button name="whisperbindbutton4" inherits="whisperbindbuttonTemplate" text="empty">
+				<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="whisperbindbutton3"/></Anchors>
+                <Scripts><OnClick> 
+					ClickButton(playerbox4:GetText(), messagebox4:GetText())
+				</OnClick></Scripts>
+            </Button>
+
+            <Button name="whisperbindbutton5" inherits="whisperbindbuttonTemplate" text="empty">
+				<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="whisperbindbutton4"/></Anchors>
+                <Scripts><OnClick> 
+					ClickButton(playerbox5:GetText(), messagebox5:GetText())
+				</OnClick></Scripts>
+            </Button>
+
+            <Button name="whisperbindbutton6" inherits="whisperbindbuttonTemplate" text="empty">
+				<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="whisperbindbutton5"/></Anchors>
+                <Scripts><OnClick> 
+					ClickButton(playerbox6:GetText(), messagebox6:GetText())
+				</OnClick></Scripts>
+            </Button>
+
+            <Button name="whisperbindbutton7" inherits="whisperbindbuttonTemplate" text="empty">
+				<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="whisperbindbutton6"/></Anchors>
+                <Scripts><OnClick> 
+					ClickButton(playerbox7:GetText(), messagebox7:GetText())
+				</OnClick></Scripts>
+            </Button>
+
+            <Button name="whisperbindbutton8" inherits="whisperbindbuttonTemplate" text="empty">
+				<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="whisperbindbutton7"/></Anchors>
+                <Scripts><OnClick> 
+					ClickButton(playerbox8:GetText(), messagebox8:GetText())
+				</OnClick></Scripts>
+            </Button>
+
+            <Button name="whisperbindbutton9" inherits="whisperbindbuttonTemplate" text="empty">
+				<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="whisperbindbutton8"/></Anchors>
+                <Scripts><OnClick> 
+					ClickButton(playerbox9:GetText(), messagebox9:GetText())
+				</OnClick></Scripts>
+            </Button>
+
+            <Button name="whisperbindbutton10" inherits="whisperbindbuttonTemplate" text="empty">
+				<Anchors><Anchor point = "TOP" relativePoint="BOTTOM" relativeTo="whisperbindbutton9"/></Anchors>
+                <Scripts><OnClick> 
+					ClickButton(playerbox10:GetText(), messagebox10:GetText())
+				</OnClick></Scripts>
+            </Button>
+			
+			
+        </Frames>
+    </Frame>
+</Ui>

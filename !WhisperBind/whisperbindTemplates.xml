@@ -1,0 +1,23 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+ 
+	<EditBox name = "editboxTemplate" inherits = "InputBoxTemplate" virtual="true" autoFocus = "false">
+		<Size>
+			<AbsDimension x = "60" y = "24"/>
+		</Size>
+		<Scripts>
+			<OnEscapePressed>this:ClearFocus()</OnEscapePressed>
+			<OnEnterPressed>this:ClearFocus()</OnEnterPressed>
+		</Scripts>
+	</EditBox>
+
+
+
+	<Button name="whisperbindbuttonTemplate" inherits="OptionsButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="60" y="22"/>
+		</Size>
+	</Button>
+
+</Ui>

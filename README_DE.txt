@@ -30,4 +30,6 @@ angezeigt werden. Wenn du in den Einstellungen im Kategorie-Feld eine fehlende K
 Filter dafür hinzugefügt. Wenn du mit der rechten Maustaste auf den „Kategorien“-Button klickst, wird im Chat eine
 Liste aller verfügbaren Kategorien ausgeschrieben.
 
+Sie können in Nachrichtentext auch einige Variablen verwenden: %player%, %myname%, %time%, %zone%, %guild%, %level%, %class%
+
 Gut geeignet für das Whispercast-Addon, wenn Sie nicht viele verschiedene Nachrichten senden müssen.

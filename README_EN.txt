@@ -29,4 +29,6 @@ PvP, Communication) only these categories have their own distinctive colors that
 If you enter a missing category in the category field in the settings, a filter for it will also be added. When
 you right-click on the "categories" button, a list of all available categories will be written out in the chat.
 
+You can also use some variables in messages: %player%, %myname%, %time%, %zone%, %guild%, %level%, %class%
+
 Well suited for the Whispercast addon if you do not need to send many different messages.

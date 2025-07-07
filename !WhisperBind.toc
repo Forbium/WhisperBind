@@ -1,0 +1,8 @@
+## Interface: 11200
+## Author: Forbium
+## Title: !WhisperBind
+## Notes: |cff3fcf26Itnerface for quick message sending|n|cff999999Author: |cff3fcf26Forbium|n|cff999999Version: 2025.06.22
+## Version: 2025.06.22
+## SavedVariables: WB_buttonbox, WB_playerbox, WB_messagebox, wbcount
+
+whisperbind.xml

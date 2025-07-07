@@ -1,0 +1,93 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+ 
+	<Frame name="WBInterfaceFrame" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOP"/>
+		</Anchors>
+		<!--
+		<Size>
+			<AbsDimension x="72" y="260"/>
+		</Size>
+		-->
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+
+		<Scripts>
+			<OnLoad>
+				wbinterface_OnLoad();
+				this:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnEvent>
+				wbinterface_OnEvent(event);
+			</OnEvent>
+			<OnDragStart>this:StartMoving();</OnDragStart>
+			<OnDragStop>this:StopMovingOrSizing();</OnDragStop>
+		</Scripts>
+		
+		
+
+		<Frames>
+		
+			<Frame name="WBOptionsFrame" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="WBInterfaceFrame" relativePoint="LEFT">
+						<Offset x="68" y="0"/>
+					</Anchor>
+				</Anchors>
+				<!--
+				<Size>
+					<AbsDimension x="215" y="260"/>
+				</Size>
+				-->
+					<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+						<EdgeSize>
+							<AbsValue val="16"/>
+						</EdgeSize>
+						<TileSize>
+							<AbsValue val="16"/>
+						</TileSize>
+						<BackgroundInsets>
+							<AbsInset left="5" right="5" top="5" bottom="5"/>
+						</BackgroundInsets>
+					</Backdrop>
+			</Frame>
+			
+			<!--
+			<Frame name="SaveFrame" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+                <Anchors>
+                    <Anchor point="BOTTOM" relativeTo="whisperbind" relativePoint="TOP">
+                        <Offset x="0" y="-4"/>
+                    </Anchor>
+                </Anchors>
+                <Size>
+                    <AbsDimension x="72" y="33"/>
+                </Size>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+
+            </Frame>
+			-->
+		</Frames>
+	</Frame>
+
+</Ui>

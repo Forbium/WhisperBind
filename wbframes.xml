@@ -6,14 +6,6 @@
 		<Anchors>
 			<Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOP"/>
 		</Anchors>
-<<<<<<< HEAD
-		<!--
-		<Size>
-			<AbsDimension x="72" y="260"/>
-		</Size>
-		-->
-=======
->>>>>>> origin/main
 		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
 			<EdgeSize>
 				<AbsValue val="16"/>
@@ -48,50 +40,6 @@
 						<Offset x="68" y="0"/>
 					</Anchor>
 				</Anchors>
-<<<<<<< HEAD
-				<!--
-				<Size>
-					<AbsDimension x="215" y="260"/>
-				</Size>
-				-->
-					<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-						<EdgeSize>
-							<AbsValue val="16"/>
-						</EdgeSize>
-						<TileSize>
-							<AbsValue val="16"/>
-						</TileSize>
-						<BackgroundInsets>
-							<AbsInset left="5" right="5" top="5" bottom="5"/>
-						</BackgroundInsets>
-					</Backdrop>
-			</Frame>
-			
-			<!--
-			<Frame name="SaveFrame" frameStrata="LOW" enableMouse="true" movable="true" parent="UIParent" hidden="true">
-                <Anchors>
-                    <Anchor point="BOTTOM" relativeTo="whisperbind" relativePoint="TOP">
-                        <Offset x="0" y="-4"/>
-                    </Anchor>
-                </Anchors>
-                <Size>
-                    <AbsDimension x="72" y="33"/>
-                </Size>
-                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-                    <EdgeSize>
-                        <AbsValue val="16"/>
-                    </EdgeSize>
-                    <TileSize>
-                        <AbsValue val="16"/>
-                    </TileSize>
-                    <BackgroundInsets>
-                        <AbsInset left="5" right="5" top="5" bottom="5"/>
-                    </BackgroundInsets>
-                </Backdrop>
-
-            </Frame>
-			-->
-=======
 				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
 					<EdgeSize>
 						<AbsValue val="16"/>
@@ -104,7 +52,6 @@
 					</BackgroundInsets>
 				</Backdrop>
 			</Frame>
->>>>>>> origin/main
 		</Frames>
 	</Frame>
 
